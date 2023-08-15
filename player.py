@@ -1,8 +1,3 @@
-# Copyright (C) 2022 The Qt Company Ltd.
-# SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
-
-"""PySide6 Multimedia player example"""
-
 import sys
 from PySide6.QtCore import QStandardPaths, Qt, Slot
 from PySide6.QtGui import QAction, QIcon, QKeySequence
@@ -14,8 +9,6 @@ from PySide6.QtMultimediaWidgets import QVideoWidget
 
 
 AVI = "video/x-msvideo"  # AVI
-
-
 MP4 = 'video/mp4'
 
 
@@ -32,7 +25,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self._playlist = []  # FIXME 6.3: Replace by QMediaPlaylist?
+        self._playlist = []
         self._playlist_index = -1
         self._audio_output = QAudioOutput()
         self._player = QMediaPlayer()
