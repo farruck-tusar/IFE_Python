@@ -6,7 +6,7 @@ from PySide6.QtCore import QDir
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QFileDialog
 
-from Sources.Dialog.dialog_videoSelection import VideoSelectionDialog
+from Sources.Dialog.videoSelection import VideoSelectionDialog
 from ui_mainwindow import Ui_MainWindow
 
 
