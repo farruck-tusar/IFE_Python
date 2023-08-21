@@ -19,8 +19,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # sidebar toggle
         self.ui.sidebarWidget.hide()
+        self.showSidebar = True
         self.ui.btn_menu.clicked.connect(self.toggle_sidebar)
-        self.sidebar_visible = True
 
         # load videos
         self.video_list_widget = self.ui.videoListPreview
@@ -49,13 +49,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.video_list_widget.addItems(self.selected_videos)
 
     def toggle_sidebar(self):
-        if self.sidebar_visible:
-            self.ui.sidebarWidget.hide()
-            self.ui.btn_menu.setIcon(QIcon(":/icons/Resources/icons/align-justify.svg"))
-        else:
+        if self.showSidebar:
             self.ui.sidebarWidget.show()
             self.ui.btn_menu.setIcon(QIcon(":/icons/Resources/icons/arrow-left-circle.svg"))
-        self.sidebar_visible = not self.sidebar_visible
+        else:
+            self.ui.sidebarWidget.hide()
+            self.ui.btn_menu.setIcon(QIcon(":/icons/Resources/icons/align-justify.svg"))
+        self.showSidebar = not self.showSidebar
 
 
 if __name__ == '__main__':
