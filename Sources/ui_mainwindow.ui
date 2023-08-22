@@ -31,12 +31,15 @@ QPushButton{
 	padding: 10px;
 	background-color: #040f13;
 	border-radius: 5px;
+}
+QPushButton:pressed {
+    background-color: red;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item alignment="Qt::AlignLeft">
-     <widget class="QFrame" name="headerFrame">
+     <widget class="QFrame" name="frame_header">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -78,7 +81,7 @@ QPushButton{
         <number>0</number>
        </property>
        <item alignment="Qt::AlignLeft">
-        <widget class="QFrame" name="menuFrame">
+        <widget class="QFrame" name="frame_toggle">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -102,7 +105,7 @@ QPushButton{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="btn_menu">
+           <widget class="QPushButton" name="btn_toggle">
             <property name="font">
              <font>
               <pointsize>15</pointsize>
@@ -121,7 +124,7 @@ QPushButton{
         </widget>
        </item>
        <item alignment="Qt::AlignLeft">
-        <widget class="QFrame" name="appNameFrame">
+        <widget class="QFrame" name="frame_title">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -136,7 +139,7 @@ QPushButton{
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item alignment="Qt::AlignLeft">
-           <widget class="QLabel" name="appName">
+           <widget class="QLabel" name="lbl_title">
             <property name="font">
              <font>
               <pointsize>20</pointsize>
@@ -155,7 +158,7 @@ QPushButton{
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="bodyFrame">
+     <widget class="QFrame" name="frame_body">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -185,7 +188,7 @@ QPushButton{
         <number>0</number>
        </property>
        <item>
-        <widget class="QWidget" name="sidebarWidget" native="true">
+        <widget class="QWidget" name="widget_sidebar" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -209,7 +212,7 @@ QPushButton{
            <number>0</number>
           </property>
           <item alignment="Qt::AlignLeft|Qt::AlignTop">
-           <widget class="QFrame" name="sidebarFrame">
+           <widget class="QFrame" name="frame_sidebar">
             <property name="enabled">
              <bool>true</bool>
             </property>
@@ -308,7 +311,7 @@ QPushButton{
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="mainFrame">
+        <widget class="QFrame" name="frame_main">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -317,6 +320,10 @@ QPushButton{
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(58, 58, 58);
+</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -335,106 +342,98 @@ QPushButton{
            <number>12</number>
           </property>
           <item>
-           <widget class="QFrame" name="loadVideoFrame">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>100</height>
-             </size>
-            </property>
+           <widget class="QStackedWidget" name="widget_stacked">
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: transparent;</string>
+             <string notr="true"/>
             </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-             <property name="spacing">
-              <number>-1</number>
-             </property>
-             <property name="bottomMargin">
-              <number>12</number>
-             </property>
-             <item>
-              <widget class="QLineEdit" name="edit_pathDir">
-               <property name="font">
-                <font>
-                 <pointsize>13</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(0, 0, 0);
+            <widget class="QWidget" name="page_home">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QFrame" name="frame_loadVideo">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QLineEdit" name="edit_pathDir">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(0, 0, 0);
 background-color: rgb(196, 196, 196);
 border-color: rgb(33, 33, 33);
 border-radius: 2px;
 padding: 7px 7px 7px 7px; </string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="dragEnabled">
-                <bool>true</bool>
-               </property>
-               <property name="readOnly">
-                <bool>false</bool>
-               </property>
-               <property name="placeholderText">
-                <string>Load video path directory...</string>
-               </property>
-               <property name="clearButtonEnabled">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_loadVideo">
-               <property name="font">
-                <font>
-                 <pointsize>15</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: #040f13;</string>
-               </property>
-               <property name="text">
-                <string>Load Videos</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="videoPreviewFrame">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(60, 60, 60);</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
-             <item>
-              <widget class="QListWidget" name="videoListPreview"/>
-             </item>
-            </layout>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Load video path directory...</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_loadVideo">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: #040f13;</string>
+                   </property>
+                   <property name="text">
+                    <string>Load Videos</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_videoList">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QListWidget" name="video_list">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(75, 75, 75);</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_about">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QFrame" name="frame_about">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="lbl_about">
+                   <property name="text">
+                    <string>About Page</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>

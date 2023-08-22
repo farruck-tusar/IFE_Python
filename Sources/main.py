@@ -18,15 +18,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.selected_videos = []
 
         # sidebar toggle
-        self.ui.sidebarWidget.hide()
+        self.ui.widget_sidebar.hide()
         self.showSidebar = True
-        self.ui.btn_menu.clicked.connect(self.toggle_sidebar)
+        self.ui.btn_toggle.clicked.connect(self.toggle_sidebar)
+
+        self.ui.btn_home.clicked.connect(lambda: self.ui.widget_stacked.setCurrentWidget(self.ui.page_home))
+        self.ui.btn_about.clicked.connect(lambda: self.ui.widget_stacked.setCurrentWidget(self.ui.page_about))
+        self.ui.btn_quit.clicked.connect(lambda: self.close())
 
         # load videos
-        self.video_list_widget = self.ui.videoListPreview
+        self.video_list_widget = self.ui.video_list
         self.ui.btn_loadVideo.clicked.connect(self.load_videos)
-
-        self.ui.edit_pathDir.setText(QDir.homePath())
 
     def load_videos(self):
         options = QFileDialog.Options()
@@ -50,18 +52,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def toggle_sidebar(self):
         if self.showSidebar:
-            self.ui.sidebarWidget.show()
-            self.ui.btn_menu.setIcon(QIcon(":/icons/Resources/icons/arrow-left-circle.svg"))
+            self.ui.widget_sidebar.show()
+            self.ui.btn_toggle.setIcon(QIcon(":/icons/Resources/icons/arrow-left-circle.svg"))
         else:
-            self.ui.sidebarWidget.hide()
-            self.ui.btn_menu.setIcon(QIcon(":/icons/Resources/icons/align-justify.svg"))
+            self.ui.widget_sidebar.hide()
+            self.ui.btn_toggle.setIcon(QIcon(":/icons/Resources/icons/align-justify.svg"))
         self.showSidebar = not self.showSidebar
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-
     window = MainWindow()
     window.show()
-
     sys.exit(app.exec())
