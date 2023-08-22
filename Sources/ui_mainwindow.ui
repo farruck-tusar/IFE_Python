@@ -353,6 +353,18 @@ QPushButton:pressed {
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
                <widget class="QFrame" name="frame_loadVideo">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>80</height>
+                 </size>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -397,11 +409,7 @@ padding: 7px 7px 7px 7px; </string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <item>
-                  <widget class="QListWidget" name="video_list">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(75, 75, 75);</string>
-                   </property>
-                  </widget>
+                  <layout class="QGridLayout" name="video_preview"/>
                  </item>
                 </layout>
                </widget>

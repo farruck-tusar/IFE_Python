@@ -15,10 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QListWidgetItem, QMainWindow,
-    QPushButton, QSizePolicy, QStackedWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QStackedWidget, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -206,6 +205,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.frame_loadVideo = QFrame(self.page_home)
         self.frame_loadVideo.setObjectName(u"frame_loadVideo")
+        self.frame_loadVideo.setMinimumSize(QSize(0, 80))
+        self.frame_loadVideo.setMaximumSize(QSize(16777215, 80))
         self.frame_loadVideo.setFrameShape(QFrame.StyledPanel)
         self.frame_loadVideo.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_loadVideo)
@@ -235,11 +236,10 @@ class Ui_MainWindow(object):
         self.frame_videoList.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_videoList)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.video_list = QListWidget(self.frame_videoList)
-        self.video_list.setObjectName(u"video_list")
-        self.video_list.setStyleSheet(u"background-color: rgb(75, 75, 75);")
+        self.video_preview = QGridLayout()
+        self.video_preview.setObjectName(u"video_preview")
 
-        self.verticalLayout_6.addWidget(self.video_list)
+        self.verticalLayout_6.addLayout(self.video_preview)
 
 
         self.verticalLayout_5.addWidget(self.frame_videoList)
