@@ -1,3 +1,4 @@
+from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import QDialog, QVBoxLayout, QListWidget, QPushButton
 
 
@@ -7,7 +8,10 @@ class VideoSelectionDialog(QDialog):
         self.selected_videos = []
 
         self.setWindowTitle("Select Videos")
-        self.setGeometry(200, 200, 400, 300)
+        # Open dialog in the center of the screen
+        self.setGeometry(0, 0, 400, 300)
+        center = QGuiApplication.screens()[0].geometry().center()
+        self.move(center - self.frameGeometry().center())
 
         layout = QVBoxLayout()
 
